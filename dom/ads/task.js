@@ -1,14 +1,17 @@
-const rotator = document.querySelectorAll('.rotator__case');
+ const rotator = document.querySelectorAll('.rotator__case');
 
 let activeIndex = 0;
 
 setInterval(() => {
-    activeIndex += 1;
-    rotator.forEach(e => {
-        e.classList.remove('rotator__case_active')
-    })
-    if (activeIndex === rotator.lenght - 1) {
+    if(rotator[activeIndex].classList.contains('rotator__case_active')) {
+        rotator[activeIndex].classList.remove('rotator__case_active');
+        activeIndex++;
+    }
+
+    
+    if(activeIndex >= rotator.length) {
         activeIndex = 0;
     }
+    
     rotator[activeIndex].classList.add('rotator__case_active');
-}, 1000)
+}, 1000);
